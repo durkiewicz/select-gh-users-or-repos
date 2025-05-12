@@ -1,0 +1,114 @@
+.auto-complete {
+    --auto-complete-base-padding: 0.5rem;
+    --auto-complete-item-padding: var(--auto-complete-base-padding) calc(var(--auto-complete-base-padding) * 2);
+    --auto-complete-theme-color-hsl: 216.23, 100%, 58.43%;
+    --auto-complete-theme-color: hsl(var(--auto-complete-theme-color-hsl));
+    --auto-complete-error-color-hsl: 357.1, 96.28%, 57.84%;
+    --auto-complete-error-color: hsl(var(--auto-complete-error-color-hsl));
+    --auto-complete-error-background-color: hsla(var(--auto-complete-error-color-hsl), .1);
+    --auto-complete-hover-color: hsla(var(--auto-complete-theme-color-hsl), .15);
+    --auto-complete-neutral-color: #ccc;
+    --auto-complete-border-radius: 0.25rem;
+    --auto-complete-options-max-height: 500%;
+
+    display: inline-block;
+    position: relative;
+}
+
+.auto-complete::selection {
+    background-color: var(--auto-complete-theme-color);
+    color: white;
+}
+
+.auto-complete__input {
+    padding: calc(var(--auto-complete-base-padding) + 1px) calc(var(--auto-complete-base-padding) * 2 + 1px);
+    border: 1px solid var(--auto-complete-neutral-color);
+    border-radius: var(--auto-complete-border-radius);
+}
+
+
+.auto-complete:focus-within > .auto-complete__input, .auto-complete__input:focus, .auto-complete__input:active {
+    outline: none;
+    padding: var(--auto-complete-item-padding);
+    border-color: var(--auto-complete-theme-color);
+    border-width: 2px;
+}
+
+.auto-complete__loader {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--auto-complete-theme-color);
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+}
+
+.auto-complete__options {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--auto-complete-neutral-color);
+    max-height: var(--auto-complete-options-max-height);
+    overflow-y: auto;
+}
+
+.auto-complete--error > .auto-complete__input, .auto-complete--error > .auto-complete__options {
+    border-color: var(--auto-complete-error-color);
+}
+
+.auto-complete--error > .auto-complete__input {
+    background-color: var(--auto-complete-error-background-color);
+}
+
+.auto-complete:focus-within > .auto-complete__options {
+    display: block;
+    position: absolute;
+    top: calc(100% + var(--auto-complete-base-padding) / 2);
+    left: 0;
+    right: 0;
+    border-radius: var(--auto-complete-border-radius);
+    z-index: 1;
+}
+
+.auto-complete__option {
+    padding: var(--auto-complete-item-padding);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.auto-complete__no-options, .auto-complete__error {
+    padding: var(--auto-complete-item-padding);
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.auto-complete__no-options {
+    opacity: 0.7;
+}
+
+.auto-complete__error {
+    color: var(--auto-complete-error-color);
+}
+
+.auto-complete__option:hover, .auto-complete__option:focus {
+    outline: none;
+    background-color: var(--auto-complete-hover-color);
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
