@@ -10,7 +10,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsup src/index.tsx --format cjs,esm && tsc --emitDeclarationOnly --declaration",
-    "lint": "eslint src --ext .ts,.tsx",
+    "lint": "tsc --noEmit && eslint --max-warnings=330 src --ext .ts,.tsx",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
