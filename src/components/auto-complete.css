@@ -27,7 +27,9 @@
 }
 
 
-.auto-complete:focus-within > .auto-complete__input, .auto-complete__input:focus, .auto-complete__input:active {
+.auto-complete:focus-within > .auto-complete__input,
+.auto-complete__input:focus,
+.auto-complete__input:active {
     outline: none;
     padding: var(--auto-complete-item-padding);
     border-color: var(--auto-complete-theme-color);
@@ -64,7 +66,9 @@
     z-index: 1;
 }
 
-.auto-complete--error > .auto-complete__input, .auto-complete--error > .auto-complete__options {
+.auto-complete--error > .auto-complete__input,
+.auto-complete--error > .auto-complete__options,
+.auto-complete--error:focus-within > .auto-complete__input {
     border-color: var(--auto-complete-error-color);
 }
 
@@ -86,7 +90,8 @@
     white-space: nowrap;
 }
 
-.auto-complete__no-options, .auto-complete__error {
+.auto-complete__no-options,
+.auto-complete__error {
     padding: var(--auto-complete-item-padding);
     font-size: 0.8em;
     text-align: center;
@@ -100,7 +105,8 @@
     color: var(--auto-complete-error-color);
 }
 
-.auto-complete__option:hover, .auto-complete__option:focus {
+.auto-complete__option:hover,
+.auto-complete__option:focus {
     outline: none;
     background-color: var(--auto-complete-hover-color);
 }
